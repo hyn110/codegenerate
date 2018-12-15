@@ -1,0 +1,92 @@
+# 项目相关配置
+anj:
+  # 名称
+  name: RuoYi
+  # 版本
+  version: 3.0.0
+  # 版权年份
+  copyrightYear: 2018
+  # 文件上传路径
+  profile: D:/profile/
+  # 获取ip地址开关
+  addressEnabled: true
+
+# 开发环境配置
+server:
+  # 服务端口
+  port: 8081
+  servlet:
+    # 项目contextPath
+    context-path: /
+  tomcat:
+    # tomcat的URI编码
+    uri-encoding: UTF-8
+    # tomcat最大线程数，默认为200
+    max-threads: 800
+    # Tomcat启动初始化的线程数，默认值25
+    min-spare-threads: 30
+ 
+# 日志配置
+logging:
+  level:
+    com.anj: debug
+    org.springframework: WARN
+    org.spring.springboot.dao: debug
+
+
+# Spring配置
+spring:
+  # 模板引擎
+  thymeleaf:
+    mode: HTML
+    encoding: utf-8
+    # 禁用缓存
+    cache: false
+  # 资源信息
+  messages:
+    # 国际化资源文件路径
+    basename: i18n/messages
+  jackson:
+    time-zone: GMT+8
+    date-format: yyyy-MM-dd HH:mm:ss
+  profiles: 
+    active: druid
+  # 文件上传
+  servlet:
+     multipart:
+       max-file-size:  30MB
+       max-request-size:  30MB
+  # 服务模块
+  devtools:
+    restart:
+      # 热部署开关
+      enabled: true
+  resources:
+    # 指定扫描静态资源的目录
+    static-locations: classpath:/META-INF/resources/, classpath:/resources/,classpath:/static/, classpath:/public/,file:D:/
+
+# MyBatis
+mybatis:
+    # 搜索指定包别名
+    typeAliasesPackage: com.anj
+    # 配置mapper的扫描，找到所有的mapper.xml映射文件
+    mapperLocations: classpath*:mapper/**/*Mapper.xml
+    # 加载全局的配置文件
+    configLocation: classpath:mapper/mybatis-config.xml
+
+
+# 代码生成
+gen: 
+  # 作者
+  author:
+  # 默认生成包路径 module 需改成自己的模块名称 如 system monitor tool
+  packageName: com.anj.project
+  # 自动去除表前缀，默认是true
+  autoRemovePre: false
+  # 指定要去除的表前缀(类名不会包含表前缀)
+  tablePrefix:
+  # 指定生成代码的路径和文件名
+  outpath: c:\code.zip
+  # 指定要处理的表,用 , 分隔
+  tables: anj_project,anj_project_img,anj_project_detail
+

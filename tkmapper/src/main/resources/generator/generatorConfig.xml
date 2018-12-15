@@ -56,10 +56,14 @@
 
 
 
+
+        <table tableName="anj_project_img">
+            <generatedKey column="id" sqlStatement="JDBC"/>
+        </table>
         <table tableName="anj_project_detail">
             <generatedKey column="id" sqlStatement="JDBC"/>
         </table>
-        <table tableName="anj_project_img">
+        <table tableName="anj_project">
             <generatedKey column="id" sqlStatement="JDBC"/>
         </table>
 
