@@ -22,7 +22,7 @@ public class CodeGen {
     @Value("${gen.tables}")
     String tables;
     @Value("${gen.outpath}")
-    String outpath = "c:/code.zip";
+    String outpath = "d:/code.zip";
 
     @Test
     public void test() throws Exception {
