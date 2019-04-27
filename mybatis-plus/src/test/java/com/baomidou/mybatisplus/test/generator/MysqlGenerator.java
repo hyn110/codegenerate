@@ -56,6 +56,7 @@ public class MysqlGenerator extends GeneratorTest {
     public static final String[] TABLE_PREFIX = {"civro" , "mp_"};
     public static final String MODULE_NAME = "test" ; // 模块名
     public static final String BASE_PACKAGE_NAME = "com.baomidou" ; // 基础的包名
+    public static final String OUTPUT_DIR = "../" ; // 代码输出目录
 
     /**
      * 表名生成策略
@@ -65,6 +66,7 @@ public class MysqlGenerator extends GeneratorTest {
      * 实体类的公有字段
      */
     private static String[] sSuperEntityColumns = {"test_id"};
+    private static String[] inCludeTables = {"test_id","a"};
 
     /**
      * MySQL 生成演示
@@ -79,14 +81,14 @@ public class MysqlGenerator extends GeneratorTest {
         AutoGenerator mpg = new AutoGenerator().setGlobalConfig(
             // 全局配置
             new GlobalConfig()
-                .setOutputDir("../")//输出目录
-                .setFileOverride(true)// 是否覆盖文件
-                .setActiveRecord(true)// 开启 activeRecord 模式
-                .setEnableCache(false)// XML 二级缓存
-                .setBaseResultMap(true)// XML ResultMap
-                .setBaseColumnList(true)// XML columList
-                //.setKotlin(true) 是否生成 kotlin 代码
-                .setAuthor("fmi110")
+                    .setOutputDir(OUTPUT_DIR)//输出目录
+                    .setFileOverride(true)// 是否覆盖文件
+                    .setActiveRecord(true)// 开启 activeRecord 模式
+                    .setEnableCache(false)// XML 二级缓存
+                    .setBaseResultMap(true)// XML ResultMap
+                    .setBaseColumnList(true)// XML columList
+                    //.setKotlin(true) 是否生成 kotlin 代码
+                    .setAuthor("fmi110")
             // 自定义文件命名，注意 %s 会自动填充表实体属性！
             // .setEntityName("%sEntity");
             // .setMapperName("%sDao")
@@ -126,6 +128,7 @@ public class MysqlGenerator extends GeneratorTest {
                     // .setSuperEntityClass("com.baomidou.demo.TestEntity")
                     // 自定义实体，公共字段
                     .setSuperEntityColumns(sSuperEntityColumns)
+                    .setInclude(inCludeTables) // 需要包含的表名
                     .setTableFillList(tableFillList)
                     .setEntityBooleanColumnRemoveIsPrefix(true)
             // 自定义 mapper 父类
