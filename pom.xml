@@ -12,6 +12,7 @@
         <module>mybatis-zheng</module>
         <module>tkmapper</module>
         <module>mybatis-ruoyi</module>
+        <module>mybatis-plus</module>
     </modules>
 
     <dependencies>

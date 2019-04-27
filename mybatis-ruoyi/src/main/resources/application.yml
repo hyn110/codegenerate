@@ -80,7 +80,7 @@ gen:
   # 作者
   author:
   # 默认生成包路径 module 需改成自己的模块名称 如 system monitor tool
-  packageName: com.civro.admin.civroadmin
+  packageName: com.tuiyun.cloud.system.admin.entity
   # 自动去除表前缀，默认是true
   autoRemovePre: false
   # 指定要去除的表前缀(类名不会包含表前缀)
@@ -88,5 +88,5 @@ gen:
   # 指定生成代码的路径和文件名
   outpath: d:\code.zip
   # 指定要处理的表,用 , 分隔
-  tables: civro_agency,civro_agency,civro_agency,civro_agency,civro_agency,civro_product
+  tables: t_plan_year
 
