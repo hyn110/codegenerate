@@ -1,4 +1,4 @@
-package ${package}.web.controller;
+package ${package}.controller;
 
 import java.util.List;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
@@ -10,16 +10,17 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import com.anj.common.annotation.Log;
-import com.anj.common.enums.BusinessType;
+import com.ruoyi.framework.aspectj.lang.annotation.Log;
+import com.ruoyi.framework.aspectj.lang.enums.BusinessType;
 import ${package}.domain.${className};
 import ${package}.service.I${className}Service;
-import com.anj.web.core.base.BaseController;
-import com.anj.framework.web.page.TableDataInfo;
-import com.anj.common.base.AjaxResult;
+import com.ruoyi.framework.web.controller.BaseController;
+import com.ruoyi.framework.web.page.TableDataInfo;
+import com.ruoyi.framework.web.domain.AjaxResult;
+import com.ruoyi.common.utils.poi.ExcelUtil;
 
 /**
- * ${tableComment} 信息操作处理
+ * ${tableComment}信息操作处理
  * 
  * @author ${author}
  * @date ${datetime}
@@ -52,6 +53,20 @@ public class ${className}Controller extends BaseController
         List<${className}> list = ${classname}Service.select${className}List(${classname});
 		return getDataTable(list);
 	}
+	
+	
+	/**
+	 * 导出${tableComment}列表
+	 */
+	@RequiresPermissions("${moduleName}:${classname}:export")
+    @PostMapping("/export")
+    @ResponseBody
+    public AjaxResult export(${className} ${classname})
+    {
+    	List<${className}> list = ${classname}Service.select${className}List(${classname});
+        ExcelUtil<${className}> util = new ExcelUtil<${className}>(${className}.class);
+        return util.exportExcel(list, "${classname}");
+    }
 	
 	/**
 	 * 新增${tableComment}
